@@ -79,6 +79,13 @@
         ctx.font = "25px Arial";
         ctx.strokeText("No se", 170, 400);
 
+        const grd = ctx.createLinearGradient(150, 0, 240, 150);
+        grd.addColorStop(0, "blue");
+        grd.addColorStop(1, "yellow");
+
+        
+        ctx.fillStyle = grd;
+        ctx.fillRect(150, 20, 150, 100);
     </script>
 </body>
 </html>
