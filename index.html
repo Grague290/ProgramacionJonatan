@@ -91,9 +91,18 @@
         grd.addColorStop(0, "blue");
         grd.addColorStop(1, "yellow");
 
-        
+    
         ctx.fillStyle = grd;
         ctx.fillRect(150, 20, 150, 100);
+
+
+        var img = new Image()
+        img.src = "perro.png";
+
+        img.onload = function(){
+            ctx.drawImage(img, 400, 250, 50, 50);
+        }
+        
     </script>
 </body>
 </html>
