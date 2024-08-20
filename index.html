@@ -103,6 +103,14 @@
             ctx.drawImage(img, 400, 250, 50, 50);
         }
         
+
+        const grd2 = ctx.createRadialGradient(175, 50, 5, 90, 60, 100);
+        grd2.addColorStop(0, "blue");
+        grd2.addColorStop(1, "black");
+
+        // Draw a filled Rectangle
+        ctx.fillStyle = grd2;
+        ctx.fillRect(10, 100, 150, 100);
     </script>
 </body>
 </html>
