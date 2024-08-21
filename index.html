@@ -16,14 +16,14 @@
     
 </head>
 <body>
-    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <canvas id="myCanvas" width="800" height="700"></canvas>
 
     <script type="text/javascript">
         const myCanvas = document.getElementById("myCanvas");
 
         const ctx = myCanvas.getContext("2d");
 
-        ctx.fillStyle = "red";
+        /*ctx.fillStyle = "red";
         ctx.fillRect(20,20,100,100);
         ctx.fillStyle = "blue";
         ctx.fillRect(100,100,100,100);
@@ -110,7 +110,19 @@
 
         // Draw a filled Rectangle
         ctx.fillStyle = grd2;
-        ctx.fillRect(10, 100, 150, 100);
+        ctx.fillRect(10, 100, 150, 100);*/
+
+        document.getElementById("myCanvas").addEventListener("mousedown", function(e){
+            ctx.strokeStyle="rgba(183, 26, 215, 0.45)";
+            ctx.fillStyle="rgba(183, 26, 215, 0.45)";
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+
+        })
+
+
     </script>
 </body>
 </html>
