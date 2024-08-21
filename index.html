@@ -128,6 +128,13 @@
             ctx.fillStyle = getRandomColor();
         })
 
+        document.getElementById("myCanvas").addEventListener("mousemove", function(e){
+            ctx.beginPath();
+            ctx.arc(e.x, e.y, 5, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+        })
+
         document.getElementById("myCanvas").addEventListener("mouseout", function(e){
             if(figura==0){
                 figura = 1;
