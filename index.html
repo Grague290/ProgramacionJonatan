@@ -112,9 +112,27 @@
         ctx.fillStyle = grd2;
         ctx.fillRect(10, 100, 150, 100);*/
 
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+              color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+          }
+
+       
+
+        document.getElementById("myCanvas").addEventListener("mouseover", function(e){
+            console.log("Hola Mundo");
+            ctx.fillStyle = getRandomColor();
+        })
+
+
         document.getElementById("myCanvas").addEventListener("mousedown", function(e){
+
+            
             ctx.strokeStyle="rgba(183, 26, 215, 0.45)";
-            ctx.fillStyle="rgba(183, 26, 215, 0.45)";
             ctx.beginPath();
             ctx.arc(e.x, e.y, 50, 0, 2 * Math.PI);
             ctx.fill();
@@ -122,6 +140,7 @@
 
         })
 
+        
 
     </script>
 </body>
