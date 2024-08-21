@@ -122,6 +122,7 @@
           }
 
         var figura = 0;
+        var estela = 0;
 
         document.getElementById("myCanvas").addEventListener("mouseover", function(e){
             console.log("Hola Mundo");
@@ -129,10 +130,12 @@
         })
 
         document.getElementById("myCanvas").addEventListener("mousemove", function(e){
-            ctx.beginPath();
-            ctx.arc(e.x, e.y, 5, 0, 2 * Math.PI);
-            ctx.fill();
-            ctx.stroke();
+            if (estela == 1){
+                ctx.beginPath();
+                ctx.arc(e.x, e.y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
         })
 
         document.getElementById("myCanvas").addEventListener("mouseout", function(e){
@@ -144,8 +147,13 @@
             }
         })
 
+        document.getElementById("myCanvas").addEventListener("mouseup", function(e){
+            estela = 0;
+        })
+
         document.getElementById("myCanvas").addEventListener("mousedown", function(e){
 
+            estela = 1;
             
             if (figura==0){
                 ctx.strokeStyle="rgba(183, 26, 215, 0.45)";
