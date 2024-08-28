@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>
+		Taller de videojuegos
+	</title>
+	<style type="text/css">
+		canvas{
+			background-color: gray;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="my_canvas" height="700" width="1200"></canvas>
+
+	<script type="text/javascript">
+		
+		var pause = false, dir = 0;
+		var canvas = null, ctx = null, x = 50, y = 50;;
+		var t_x=0, t_y=0;
+		var sonido = new Audio();
+		var avatar = new Image();
+
+		// if(this.x < target.x + target.w &&  
+        // this.x + this.w > target.x   &&    
+        // this.y < target.y + target.h &&   
+        // this.y + this.h > target.y)
+        //  {
+        //      return true;
+        //  }
+
+		//función que inicializa el programa
+		function init()
+		{
+			window.requestAnimationFrame(init);
+			update();
+		}
+
+		window.addEventListener("keydown", (e) =>{
+			console.log(e.keyCode)
+			if (e.keyCode == 87 || e.keyCode == 83 || e.keyCode == 65 || e.keyCode==68) {
+				dir = e.keyCode;
+			}
+			//w-87
+			//a-65
+			//s-83
+			//d-68
+
+		})
+
+		//función que actualiza las variables que controlan todo
+		function update()
+		{
+			if (dir == 87 ) {
+				y -= 10;
+		    	if (y < 0) {
+		        	y = canvas.height;
+				}
+			}
+			if (dir == 83 ) {
+				y += 10;
+				if (y > canvas.height) {
+		        	y = 0;
+				}
+			}
+			if (dir == 65 ) {
+				x -= 10;
+		    	if (x < 0) {
+		        	x = canvas.width;
+				}
+			}
+			if (dir == 68 ) {
+				x += 10;
+				if (x > canvas.width) {
+		        	x = 0;
+				}
+			}
+			
+		if(x < t_x + 50 &&  
+        x + 50 > t_x   &&    
+        y < t_y + 50 &&   
+        y + 50 > t_y){
+              //return true;
+			  console.log("Choco");
+
+			  t_x = Math.floor((Math.random() * 700) + 1)
+			  t_y = Math.floor((Math.random() * 700) + 1)
+			  sonido.play()
+        }
+
+			paint()
+			
+		}
+
+		//función para pintar los elementos en canvas
+		function paint()
+		{
+			ctx.fillStyle = '#000';
+		    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+			//personaje
+		    ctx.fillStyle = '#F32E2E';
+		   // ctx.fillRect(x, y, 50, 50); 
+			ctx.drawImage(avatar,x,y,50,50);
+
+			//target
+			ctx.fillStyle = '#2EF3EA';
+		    ctx.fillRect(t_x, t_y, 50, 50); 
+		} 
+
+		//solicita una animación al navegador
+		window.requestAnimationFrame = (function () {
+		    return window.requestAnimationFrame ||
+		        window.webkitRequestAnimationFrame ||
+		        window.mozRequestAnimationFrame ||
+		        function (callback) {
+		            window.setTimeout(callback, 17);
+		        };
+		}());
+
+		//inicializamos lo necesario
+		canvas = document.getElementById('my_canvas');
+    	ctx = canvas.getContext('2d');
+    	sonido.src = "mario-coin.mp3";
+		avatar.src = "oso-panda.png";
+		init();
+
+	</script>
+</body>
+</html>
