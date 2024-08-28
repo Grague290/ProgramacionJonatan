@@ -23,6 +23,7 @@
 		var t_x=0, t_y=0;
 		var sonido = new Audio();
 		var avatar = new Image();
+		var speed = 10;
 
 		// if(this.x < target.x + target.w &&  
         // this.x + this.w > target.x   &&    
@@ -44,6 +45,9 @@
 			if (e.keyCode == 87 || e.keyCode == 83 || e.keyCode == 65 || e.keyCode==68) {
 				dir = e.keyCode;
 			}
+			if (e.keyCode == 32) { 
+				speed = 20; 
+			}
 			//w-87
 			//a-65
 			//s-83
@@ -51,29 +55,35 @@
 
 		})
 
+		window.addEventListener("keyup", (e) => {
+			if (e.keyCode == 32) { 
+				speed = 10; 
+			}
+		})
+
 		//función que actualiza las variables que controlan todo
 		function update()
 		{
 			if (dir == 87 ) {
-				y -= 10;
+				y -= speed;
 		    	if (y < 0) {
 		        	y = canvas.height;
 				}
 			}
 			if (dir == 83 ) {
-				y += 10;
+				y += speed;
 				if (y > canvas.height) {
 		        	y = 0;
 				}
 			}
 			if (dir == 65 ) {
-				x -= 10;
+				x -= speed;
 		    	if (x < 0) {
 		        	x = canvas.width;
 				}
 			}
 			if (dir == 68 ) {
-				x += 10;
+				x += speed;
 				if (x > canvas.width) {
 		        	x = 0;
 				}
